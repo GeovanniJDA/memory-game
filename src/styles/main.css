@@ -4,6 +4,7 @@ body{
   align-items: center;
   min-height: 100dvh;
   background-color: #fc1e8a;
+  user-select: none;
 }
 
 .container{
@@ -60,4 +61,32 @@ h2{
   align-items: center;
   justify-content: center;
   background-color: #fff;
+  font-size: 3em;
+
+  transform: rotateY(180deg);
+  transition: 0.25s;
+  z-index: 1;
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #404040;
+  transition: 0.25s;
+  transform: rotateY(0deg);
+  opacity: 1;
+  z-index: -0;
+  /* backface-visibility: hidden; erro de compatibilidade no firefox*/
+}
+
+.item.boxOpen{
+  transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after{
+  transform: rotateY(180deg);
+  opacity: 0;
+  z-index: 0;
 }
